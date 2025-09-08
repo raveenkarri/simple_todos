@@ -1,41 +1,5 @@
-import TodoItem from '../TodoItem'
 import {Component} from 'react'
-<<<<<<< HEAD
-
-const initialTodosList = [
-  {
-    id: 1,
-    title: 'Book the ticket for today evening',
-  },
-  {
-    id: 2,
-    title: 'Rent the movie for tomorrow movie night',
-  },
-  {
-    id: 3,
-    title: 'Confirm the slot for the yoga session tomorrow morning',
-  },
-  {
-    id: 4,
-    title: 'Drop the parcel at Bloomingdale',
-  },
-  {
-    id: 5,
-    title: 'Order fruits on Big Basket',
-  },
-  {
-    id: 6,
-    title: 'Fix the production issue',
-  },
-  {
-    id: 7,
-    title: 'Confirm my slot for Saturday Night',
-  },
-  {
-    id: 8,
-    title: 'Get essentials for Sunday car wash',
-  },
-=======
+import TodoItem from '../TodoItem'
 import '../TodoItem/index.css'
 
 const initialTodosList = [
@@ -51,15 +15,11 @@ const initialTodosList = [
   {id: 6, title: 'Fix the production issue', completed: false},
   {id: 7, title: 'Confirm my slot for Saturday Night', completed: false},
   {id: 8, title: 'Get essentials for Sunday car wash', completed: false},
->>>>>>> solution
 ]
 
 class SimpleTodos extends Component {
   state = {
     todoList: initialTodosList,
-<<<<<<< HEAD
-  }
-=======
     newTodo: '',
   }
 
@@ -68,7 +28,7 @@ class SimpleTodos extends Component {
     this.setState({newTodo: event.target.value})
   }
 
-  // Add new todo (supports multiple with count)
+  // Add new todo (supports multiple with count at end)
   onAddTodo = () => {
     const {newTodo, todoList} = this.state
     if (newTodo.trim() === '') return
@@ -77,7 +37,6 @@ class SimpleTodos extends Component {
     let count = 1
     let title = newTodo.trim()
 
-    // If last part is a number, treat it as count
     if (!isNaN(parts[parts.length - 1])) {
       count = parseInt(parts.pop())
       title = parts.join(' ')
@@ -96,20 +55,11 @@ class SimpleTodos extends Component {
   }
 
   // Delete todo
->>>>>>> solution
   onTodoListChange = id => {
     const {todoList} = this.state
     const newList = todoList.filter(each => each.id !== id)
     this.setState({todoList: newList})
   }
-<<<<<<< HEAD
-  render() {
-    const {todoList} = this.state
-    return (
-      <div className="bg-container">
-        <ul className="todo-list">
-          <h1>Simple Todos</h1>
-=======
 
   // Toggle complete
   onToggleComplete = id => {
@@ -120,7 +70,7 @@ class SimpleTodos extends Component {
     }))
   }
 
-  // Update title (edit/save)
+  // Update title
   onUpdateTitle = (id, newTitle) => {
     this.setState(prevState => ({
       todoList: prevState.todoList.map(todo =>
@@ -133,34 +83,30 @@ class SimpleTodos extends Component {
     const {todoList, newTodo} = this.state
 
     return (
-      <div className='bg-container'>
-        <h1 className='heading'>Simple Todos</h1>
+      <div className="bg-container">
+        <h1 className="heading">Simple Todos</h1>
 
-        <div className='input-container'>
+        <div className="input-container">
           <input
-            type='text'
-            placeholder='Enter todo (e.g., Buy Milk 3)'
+            type="text"
+            placeholder="Enter todo (e.g., Buy Milk 3)"
             value={newTodo}
             onChange={this.onChangeNewTodo}
-            className='input-box'
+            className="input-box"
           />
-          <button onClick={this.onAddTodo} className='add-btn'>
+          <button onClick={this.onAddTodo} className="add-btn">
             Add
           </button>
         </div>
 
-        <ul className='todo-list'>
->>>>>>> solution
+        <ul className="todo-list">
           {todoList.map(eachTodo => (
             <TodoItem
               todoItem={eachTodo}
               key={eachTodo.id}
               onTodoListChange={this.onTodoListChange}
-<<<<<<< HEAD
-=======
               onToggleComplete={this.onToggleComplete}
               onUpdateTitle={this.onUpdateTitle}
->>>>>>> solution
             />
           ))}
         </ul>
